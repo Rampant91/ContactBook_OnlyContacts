@@ -26,21 +26,21 @@ namespace MyContactBook.ViewModels
         }
         #endregion
 
-        //#region ContactProperties
-        //private string? _firstName;
-        //public string? FirstName
-        //{
-        //    get { return _firstName; }
-        //    set { _firstName = value; OnPropertyChanged(nameof(FirstName)); }
-        //}
+        #region ContactProperties
+        private string? _firstName;
+        public string? FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = value; OnPropertyChanged(nameof(FirstName)); }
+        }
 
-        //private string? _lastName;
-        //public string? LastName
-        //{
-        //    get { return _lastName; }
-        //    set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
-        //}
-        //#endregion
+        private string? _lastName;
+        public string? LastName
+        {
+            get { return _lastName; }
+            set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
+        }
+        #endregion
 
         public ContactsViewModel()
         {
