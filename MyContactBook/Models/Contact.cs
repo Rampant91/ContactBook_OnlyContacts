@@ -1,55 +1,29 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
 namespace MyContactBook.Models
 {
-    public class Contact : INotifyPropertyChanged
+    public class Contact
     {
-        private bool _editeble;
-        public bool Editeble
-        {
-            get => _editeble; 
-            set { _editeble = value; OnPropertyChanged(nameof(Editeble)); }
-        }
+        [Key]
+        public int Id { get; set; }
+        [NotMapped]
+        public bool Editeble { get; set; }
+     
+        public string? FirstName { get; set; }
 
-        private string? _firstName;
-        public string? FirstName
-        {
-            get => _firstName; 
-            set { _firstName = value; OnPropertyChanged(nameof(FirstName)); }
-        }
+        public string? LastName { get; set; }
 
-        private string? _lastName;
-        public string? LastName
-        {
-            get => _lastName;
-            set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
-        }
+        public string? Patronymic { get; set; }
 
-        private string? _patronymic;
-        public string? Patronymic
-        {
-            get => _patronymic;
-            set { _patronymic = value; OnPropertyChanged(nameof(Patronymic)); }
-        }
+        public string? Phone { get; set; }
 
-        private string? _phone;
-        public string? Phone
-        {
-            get => _phone;
-            set { _phone = value; OnPropertyChanged(nameof(Phone)); }
-        }
-
-        private string? _email;
-        public string? Email
-        {
-            get => _email;
-            set { _email = value; OnPropertyChanged(nameof(Email)); }
-        }
-
+        public string? Email { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyChanged = "")
+        protected void OnPropertyChanged([CallerMemberName]string propertyChanged = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
         }

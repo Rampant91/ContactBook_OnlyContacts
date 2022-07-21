@@ -1,6 +1,8 @@
 ﻿using MyContactBook.Commands;
+using MyContactBook.DbRealization;
 using MyContactBook.Models;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MyContactBook.ViewModels
 {
@@ -30,26 +32,24 @@ namespace MyContactBook.ViewModels
         private string? _firstName;
         public string? FirstName
         {
-            get { return _firstName; }
+            get => _firstName;
             set { _firstName = value; OnPropertyChanged(nameof(FirstName)); }
         }
 
         private string? _lastName;
         public string? LastName
         {
-            get { return _lastName; }
+            get => _lastName;
             set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
         }
         #endregion
 
         public ContactsViewModel()
         {
-            Contacts = new ObservableCollection<Contact>
+            using (DataContext db = new DataContext())
             {
-                new Contact {FirstName = "Andrey", LastName= "Ostap"},
-                new Contact {FirstName = "Anton", LastName= "Plowenko"},
-                new Contact {FirstName = "Leni4"}
-            };
+                Contacts = new ObservableCollection<Contact>(db.Contacts.ToList());
+            }
         }
 
         #region Commands
@@ -60,9 +60,14 @@ namespace MyContactBook.ViewModels
             {
                 return _addContact ??= new RelayCommand(obj =>
                     {
-                        Contact contact = new() { FirstName = "test" };
-                        Contacts.Insert(0, contact);
-                        SelectedContact = contact;
+                    using (DataContext db = new DataContext())
+                        {
+                            Contact contact = new() { FirstName = "test" };
+                            db.Contacts.Add(contact);
+                            SelectedContact = contact;
+                            db.SaveChanges();
+                            Contacts.Add(contact);
+                        }
                     });
             }
         }
