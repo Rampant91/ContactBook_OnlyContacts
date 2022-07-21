@@ -11,7 +11,7 @@ namespace MyContactBook.Models
         public int Id { get; set; }
         [NotMapped]
         public bool Editeble { get; set; }
-     
+        
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }

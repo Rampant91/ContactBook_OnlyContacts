@@ -27,13 +27,13 @@
                 <Button x:Name="Favorites" Content="Избранные" Margin="5" />
             </Grid>
             <Grid Grid.Column="3">
-                <Button Command="{Binding AddContact}" Content="Добавить" Margin="0,5,10,5"/>
+                <Button Command="{Binding addCommand}" Content="Добавить" Margin="0,5,10,5"/>
             </Grid>
             <Grid Grid.Column="4">
-                <Button Command="{Binding EditContact}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
+                <Button Command="{Binding updateCommand}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
             </Grid>
             <Grid Grid.Column="5">
-                <Button Command="{Binding DeleteContact}" CommandParameter="{Binding SelectedContact}" Content="Удалить" Margin="0,5,10,5" />
+                <Button Command="{Binding deleteCommand}" CommandParameter="{Binding SelectedContact}" Content="Удалить" Margin="0,5,10,5" />
             </Grid>
         </Grid>
         <Grid DockPanel.Dock="Bottom">
