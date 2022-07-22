@@ -1,4 +1,5 @@
 ﻿using MyContactBook.DbRealization;
+using MyContactBook.Models;
 using MyContactBook.ViewModels;
 using System.ComponentModel;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace MyContactBook.Commands
                     contactDb.Email = contact.Email;
                     db.SaveChanges();
                 }
-                _contactsViewModel.Editable = false;
+                //_contactsViewModel.Editable = false;
             }
         }
     }

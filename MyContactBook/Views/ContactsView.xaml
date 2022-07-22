@@ -7,6 +7,7 @@
              xmlns:vm="clr-namespace:MyContactBook.ViewModels"
              xmlns:v="clr-namespace:MyContactBook.Views" 
              xmlns:m="clr-namespace:MyContactBook.Models" 
+             d:DataContext="{d:DesignInstance Type=vm:ContactsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
@@ -29,7 +30,7 @@
                 <Button Command="{Binding addCommand}" Content="Добавить" Margin="0,5,10,5"/>
             </Grid>
             <Grid Grid.Column="4">
-                <Button Command="{Binding updateCommand}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
+                <Button Command="{Binding editCommand}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
             </Grid>
             <Grid Grid.Column="5">
                 <Button Command="{Binding deleteCommand}" CommandParameter="{Binding SelectedContact}" Content="Удалить" Margin="0,5,10,5" />
@@ -39,7 +40,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300*" MinWidth="120"/>
                 <ColumnDefinition Width="3*" MinWidth="3"/>
-                <ColumnDefinition Width="497*" MinWidth="200"/>
+                <ColumnDefinition Width="349*" MinWidth="200"/>
+                <ColumnDefinition Width="148*"/>
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" ItemsSource="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedContact}">
                 <ListBox.ItemTemplate>
@@ -53,14 +55,14 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" VerticalAlignment="Stretch">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" IsEnabled="{Binding Editable}" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
-                        <StackPanel Height="320" DataContext="{Binding Path=SelectedContact}" VerticalAlignment="Stretch">
+                <Grid Grid.Row="0" VerticalAlignment="Stretch" DataContext="{Binding Path=SelectedContact}">
+                    <ScrollViewer  VerticalScrollBarVisibility="Auto" IsEnabled="{Binding Editable, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Height="320"  VerticalAlignment="Stretch">
                             <TextBlock Text="Имя" Margin="5,0,0,0"/>
                             <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5" />
                             <TextBlock Text="Фамилия" Margin="5,0,0,0"/>

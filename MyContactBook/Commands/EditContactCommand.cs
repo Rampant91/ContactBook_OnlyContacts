@@ -33,7 +33,7 @@ namespace MyContactBook.Commands
 
         public override void Execute(object? parameter)
         {
-            _contactsViewModel.Editable = true;
+            _contactsViewModel.SelectedContact.Editable = true;
         }
     }
 }
