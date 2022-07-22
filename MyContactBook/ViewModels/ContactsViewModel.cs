@@ -8,8 +8,6 @@ namespace MyContactBook.ViewModels
 {
     public class ContactsViewModel : BaseViewModel
     {
-<<<<<<< Updated upstream
-=======
         #region Commands
         public ICommand addCommand { get; set; }
         public ICommand deleteCommand { get; set; }
@@ -17,7 +15,6 @@ namespace MyContactBook.ViewModels
         public ICommand updateCommand { get; set; }
         #endregion
 
->>>>>>> Stashed changes
         #region Contacts
         private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
         public ObservableCollection<Contact> Contacts
@@ -64,16 +61,9 @@ namespace MyContactBook.ViewModels
 
         public ContactsViewModel()
         {
-<<<<<<< Updated upstream
             using (DataContext db = new DataContext())
             {
                 Contacts = new ObservableCollection<Contact>(db.Contacts.ToList());
-=======
-            get => _patronymic;
-            set 
-            {   _patronymic = value; 
-                OnPropertyChanged(nameof(Patronymic)); 
->>>>>>> Stashed changes
             }
         }
 
@@ -81,7 +71,6 @@ namespace MyContactBook.ViewModels
         private RelayCommand? _addContact;
         public RelayCommand? AddContact
         {
-<<<<<<< Updated upstream
             get
             {
                 return _addContact ??= new RelayCommand(obj =>
@@ -95,31 +84,15 @@ namespace MyContactBook.ViewModels
                             Contacts.Add(contact);
                         }
                     });
-=======
-            get => _phone;
-            set 
-            { 
-                _phone = value; 
-                OnPropertyChanged(nameof(Phone)); 
->>>>>>> Stashed changes
-            }
-        }
 
         private RelayCommand? _deleteContact;
         public RelayCommand? DeleteContact
         {
-<<<<<<< Updated upstream
             get
             {
                 return _deleteContact ??= new RelayCommand(
                     obj => Contacts.Remove(obj as Contact),
                     obj => SelectedContact is Contact);
-=======
-            get => _email;
-            set 
-            { 
-                _email = value; 
-                OnPropertyChanged(nameof(Email)); 
             }
         }
 
@@ -131,27 +104,25 @@ namespace MyContactBook.ViewModels
             { 
                 _editable = value; 
                 OnPropertyChanged(nameof(Editable)); 
->>>>>>> Stashed changes
             }
         }
 
         private RelayCommand? _editContact;
         public RelayCommand? EditContact
         {
-<<<<<<< Updated upstream
             get
-=======
-            addCommand = new AddContactCommand(this);
-            deleteCommand = new DeleteContactCommand(this);
-            editCommand = new EditContactCommand(this);
-            updateCommand = new UpdateContactCommand(this);
-            using (DataContext db = new DataContext())
->>>>>>> Stashed changes
             {
-                return _editContact ??= new RelayCommand(obj =>
+                addCommand = new AddContactCommand(this);
+                deleteCommand = new DeleteContactCommand(this);
+                editCommand = new EditContactCommand(this);
+                updateCommand = new UpdateContactCommand(this);
+                using (DataContext db = new DataContext())
+                {
+                    return _editContact ??= new RelayCommand(obj =>
                     {
                         SelectedContact.Editeble = true;
                     }, obj => SelectedContact != null);
+                }
             }
         }
         #endregion

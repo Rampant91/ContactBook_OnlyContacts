@@ -7,7 +7,6 @@
              xmlns:vm="clr-namespace:MyContactBook.ViewModels"
              xmlns:v="clr-namespace:MyContactBook.Views" 
              xmlns:m="clr-namespace:MyContactBook.Models" 
-             d:DataContext="{d:DesignInstance Type=vm:ContactsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
@@ -30,11 +29,7 @@
                 <Button Command="{Binding AddContact}" Content="Добавить" Margin="0,5,10,5"/>
             </Grid>
             <Grid Grid.Column="4">
-<<<<<<< Updated upstream
                 <Button Command="{Binding EditContact}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
-=======
-                <Button Command="{Binding editCommand}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
->>>>>>> Stashed changes
             </Grid>
             <Grid Grid.Column="5">
                 <Button Command="{Binding DeleteContact}" CommandParameter="{Binding SelectedContact}" Content="Удалить" Margin="0,5,10,5" />

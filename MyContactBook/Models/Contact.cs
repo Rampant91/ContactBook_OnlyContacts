@@ -8,13 +8,8 @@ namespace MyContactBook.Models
         [Key]
         public int Id { get; set; }
         [NotMapped]
-<<<<<<< Updated upstream
-        public bool Editeble { get; set; }
-     
-=======
         public bool Editable { get; set; } = false;
 
->>>>>>> Stashed changes
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
