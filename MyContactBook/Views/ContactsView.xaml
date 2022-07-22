@@ -30,7 +30,11 @@
                 <Button Command="{Binding AddContact}" Content="Добавить" Margin="0,5,10,5"/>
             </Grid>
             <Grid Grid.Column="4">
+<<<<<<< Updated upstream
                 <Button Command="{Binding EditContact}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
+=======
+                <Button Command="{Binding editCommand}" CommandParameter="{Binding SelectedContact}" Content="Изменить" Margin="0,5,10,5" />
+>>>>>>> Stashed changes
             </Grid>
             <Grid Grid.Column="5">
                 <Button Command="{Binding DeleteContact}" CommandParameter="{Binding SelectedContact}" Content="Удалить" Margin="0,5,10,5" />
@@ -54,20 +58,31 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
-            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
-                <StackPanel Grid.Column="2" DataContext="{Binding Path=SelectedContact}" Grid.ColumnSpan="2">
-                    <TextBlock Text="Имя" Margin="5,0,0,0"/>
-                    <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5" />
-                    <TextBlock Text="Фамилия" Margin="5,0,0,0"/>
-                    <TextBox Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
-                    <TextBlock Text="Отчество" Margin="5,0,0,0"/>
-                    <TextBox Text="{Binding Path=Patronymic, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
-                    <TextBlock Text="Телефон" Margin="5,0,0,0"/>
-                    <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
-                    <TextBlock Text="Email" Margin="5,0,0,0"/>
-                    <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
-                </StackPanel>
-            </ScrollViewer>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalAlignment="Stretch">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" IsEnabled="{Binding Editable}" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Height="320" DataContext="{Binding Path=SelectedContact}" VerticalAlignment="Stretch">
+                            <TextBlock Text="Имя" Margin="5,0,0,0"/>
+                            <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5" />
+                            <TextBlock Text="Фамилия" Margin="5,0,0,0"/>
+                            <TextBox Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
+                            <TextBlock Text="Отчество" Margin="5,0,0,0"/>
+                            <TextBox Text="{Binding Path=Patronymic, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
+                            <TextBlock Text="Телефон" Margin="5,0,0,0"/>
+                            <TextBox Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
+                            <TextBlock Text="Email" Margin="5,0,0,0"/>
+                            <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,10,5"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="1" Height="80" MaxHeight="80" VerticalAlignment="Bottom" >
+                    <Button Width="100" Height="50" Command="{Binding updateCommand}" CommandParameter="{Binding SelectedContact}" Content="Сохранить" Margin="0,0,0,20" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
         </Grid>
     </DockPanel>
 </UserControl>

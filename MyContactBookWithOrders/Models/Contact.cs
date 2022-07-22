@@ -1,20 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace MyContactBook.Models
+namespace MyContactBookWithOrders.Models
 {
     public class Contact
     {
         [Key]
         public int Id { get; set; }
-        [NotMapped]
-<<<<<<< Updated upstream
-        public bool Editeble { get; set; }
-     
-=======
-        public bool Editable { get; set; } = false;
 
->>>>>>> Stashed changes
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -25,5 +18,6 @@ namespace MyContactBook.Models
 
         public string? Email { get; set; }
 
+        public IEnumerable<Order> Orders { get; set; }
     }
 }
