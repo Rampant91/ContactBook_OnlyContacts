@@ -3,6 +3,7 @@ using MyContactBook.DbRealization;
 using MyContactBook.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace MyContactBook.ViewModels
 {
@@ -16,7 +17,7 @@ namespace MyContactBook.ViewModels
         #endregion
 
         #region Contacts
-        private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
+        private ObservableCollection<Contact> _contacts;
         public ObservableCollection<Contact> Contacts
         {
             get => _contacts;
@@ -26,12 +27,18 @@ namespace MyContactBook.ViewModels
                 OnPropertyChanged(nameof(Contacts));
             }
         }
+        #endregion
 
+        #region SelectedContact
         private Contact? _selectedContact;
         public Contact? SelectedContact
         {
             get => _selectedContact;
-            set { _selectedContact = value; OnPropertyChanged(nameof(SelectedContact)); }
+            set
+            {
+                _selectedContact = value;
+                OnPropertyChanged(nameof(SelectedContact));
+            }
         }
         #endregion
 
@@ -51,25 +58,19 @@ namespace MyContactBook.ViewModels
         public string? LastName
         {
             get => _lastName;
-            set 
-            { 
-                _lastName = value; 
-                OnPropertyChanged(nameof(LastName)); 
-            }
+            set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
         }
         #endregion
 
-        public ContactsViewModel()
+        private string? _patronymic;
+        public string? Patronymic
         {
-            using (DataContext db = new DataContext())
-            {
-                Contacts = new ObservableCollection<Contact>(db.Contacts.ToList());
-            }
+            get => _patronymic;
+            set { _patronymic = value; OnPropertyChanged(nameof(Patronymic)); }
         }
 
-        #region Commands
-        private RelayCommand? _addContact;
-        public RelayCommand? AddContact
+        private string? _phone;
+        public string? Phone
         {
             get
             {
@@ -84,45 +85,26 @@ namespace MyContactBook.ViewModels
                             Contacts.Add(contact);
                         }
                     });
-
-        private RelayCommand? _deleteContact;
-        public RelayCommand? DeleteContact
-        {
-            get
-            {
-                return _deleteContact ??= new RelayCommand(
-                    obj => Contacts.Remove(obj as Contact),
-                    obj => SelectedContact is Contact);
             }
         }
 
-        private bool _editable = false;
-        public bool Editable
+        private string? _email;
+        public string? Email
         {
-            get => _editable;
-            set 
-            { 
-                _editable = value; 
-                OnPropertyChanged(nameof(Editable)); 
-            }
+            get => _email;
+            set { _email = value; OnPropertyChanged(nameof(Email)); }
         }
+        #endregion
 
         private RelayCommand? _editContact;
         public RelayCommand? EditContact
         {
             get
             {
-                addCommand = new AddContactCommand(this);
-                deleteCommand = new DeleteContactCommand(this);
-                editCommand = new EditContactCommand(this);
-                updateCommand = new UpdateContactCommand(this);
-                using (DataContext db = new DataContext())
-                {
-                    return _editContact ??= new RelayCommand(obj =>
+                return _editContact ??= new RelayCommand(obj =>
                     {
                         SelectedContact.Editeble = true;
                     }, obj => SelectedContact != null);
-                }
             }
         }
         #endregion
