@@ -60,7 +60,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" VerticalAlignment="Stretch" DataContext="{Binding Path=SelectedContact}">
+                <Grid Grid.Row="0" VerticalAlignment="Stretch" DataContext="{Binding Path=SelectedContact}" >
                     <ScrollViewer  VerticalScrollBarVisibility="Auto" IsEnabled="{Binding Editable, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
                         <StackPanel Height="320"  VerticalAlignment="Stretch">
                             <TextBlock Text="Имя" Margin="5,0,0,0"/>
