@@ -5,7 +5,8 @@ namespace MyContactBook.Commands
 {
     public abstract class BaseCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
+
         public void OnCanExecuteChanged()
         {
             CanExecuteChanged?.Invoke(this, new EventArgs());

@@ -16,8 +16,8 @@ namespace MyContactBook.ViewModels
         #endregion
 
         #region Contacts
-        private ObservableCollection<Contact> _contacts;
-        public ObservableCollection<Contact> Contacts
+        private ObservableCollection<Contact>? _contacts;
+        public ObservableCollection<Contact>? Contacts
         {
             get => _contacts;
             set
@@ -57,39 +57,59 @@ namespace MyContactBook.ViewModels
         public string? LastName
         {
             get => _lastName;
-            set { _lastName = value; OnPropertyChanged(nameof(LastName)); }
+            set 
+            { 
+                _lastName = value;
+                OnPropertyChanged(nameof(LastName)); 
+            }
         }
 
         private string? _patronymic;
         public string? Patronymic
         {
             get => _patronymic;
-            set { _patronymic = value; OnPropertyChanged(nameof(Patronymic)); }
+            set 
+            { 
+                _patronymic = value; 
+                OnPropertyChanged(nameof(Patronymic)); 
+            }
         }
 
         private string? _phone;
         public string? Phone
         {
             get => _phone;
-            set { _phone = value; OnPropertyChanged(nameof(Phone)); }
+            set 
+            { 
+                _phone = value; 
+                OnPropertyChanged(nameof(Phone)); 
+            }
         }
 
         private string? _email;
         public string? Email
         {
             get => _email;
-            set { _email = value; OnPropertyChanged(nameof(Email)); }
+            set 
+            { 
+                _email = value; 
+                OnPropertyChanged(nameof(Email));
+            }
         }
 
         private bool _editable = false;
         public bool Editable
         {
-            get { return _editable; }
-            set { _editable = value; OnPropertyChanged(nameof(Editable)); }
+            get => _editable;
+            set
+            { 
+                _editable = value;
+                OnPropertyChanged(nameof(Editable));
+            }
         }
-
         #endregion
 
+        #region Constructor
         public ContactsViewModel()
         {
             updateCommand = new UpdateContactCommand(this);
@@ -98,8 +118,12 @@ namespace MyContactBook.ViewModels
             editCommand = new EditContactCommand(this);
             using (DataContext db = new DataContext())
             {
-                Contacts = new ObservableCollection<Contact>(db.Contacts);
+                if (db.Contacts != null)
+                    Contacts = new ObservableCollection<Contact>(db.Contacts);
+                else
+                    Contacts = new ObservableCollection<Contact>();
             }
         }
+        #endregion
     }
 }

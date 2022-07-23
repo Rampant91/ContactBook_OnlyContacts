@@ -12,6 +12,7 @@ namespace MyContactBook.DbRealization
     public class DataContext : DbContext
     {
         private readonly string ConnectionString = @"Server=(localdb)\mssqllocaldb;Database=mycontactsdb;Trusted_Connection=True;";
+
         public DbSet<Contact> Contacts { get; set; } = null!;
         
         public DataContext()

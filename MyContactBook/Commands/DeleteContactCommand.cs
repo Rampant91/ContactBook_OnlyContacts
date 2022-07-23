@@ -25,6 +25,7 @@ namespace MyContactBook.Commands
                 OnCanExecuteChanged();
             }
         }
+
         public override bool CanExecute(object? parameter)
         {
             return _contactsViewModel.SelectedContact != null;
@@ -32,7 +33,7 @@ namespace MyContactBook.Commands
 
         public override void Execute(object? parameter)
         {
-            var contact = _contactsViewModel.SelectedContact;
+            var contact = _contactsViewModel.SelectedContact = null!;
             using (DataContext db = new DataContext())
             {
                 var contactDb = db.Contacts.FirstOrDefault(x => x.Id == contact.Id);

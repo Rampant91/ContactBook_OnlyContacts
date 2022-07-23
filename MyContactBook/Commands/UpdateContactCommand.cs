@@ -1,5 +1,4 @@
 ﻿using MyContactBook.DbRealization;
-using MyContactBook.Models;
 using MyContactBook.ViewModels;
 using System.ComponentModel;
 using System.Linq;
@@ -18,27 +17,12 @@ namespace MyContactBook.Commands
 
         private void ContactsViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ContactsViewModel.SelectedContact))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.FirstName))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.LastName))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.Patronymic))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.Phone))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.Email))
+            if (e.PropertyName == nameof(ContactsViewModel.SelectedContact)
+                || e.PropertyName == nameof(ContactsViewModel.FirstName)
+                || e.PropertyName == nameof(ContactsViewModel.LastName)
+                || e.PropertyName == nameof(ContactsViewModel.Patronymic)
+                || e.PropertyName == nameof(ContactsViewModel.Phone)
+                || e.PropertyName == nameof(ContactsViewModel.Email))
             {
                 OnCanExecuteChanged();
             }
@@ -53,7 +37,7 @@ namespace MyContactBook.Commands
         {
             using (DataContext db = new DataContext())
             {
-                var contact = _contactsViewModel.SelectedContact;
+                var contact = _contactsViewModel.SelectedContact = null!;
                 var contactDb = db.Contacts.FirstOrDefault(x => x.Id == contact.Id);
                 if (contactDb != null)
                 {
@@ -64,7 +48,7 @@ namespace MyContactBook.Commands
                     contactDb.Email = contact.Email;
                     db.SaveChanges();
                 }
-                //_contactsViewModel.Editable = false;
+                _contactsViewModel.Editable = false;
             }
         }
     }

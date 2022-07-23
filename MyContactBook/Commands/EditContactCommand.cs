@@ -1,5 +1,4 @@
 ﻿using MyContactBook.ViewModels;
-using System;
 using System.ComponentModel;
 
 namespace MyContactBook.Commands
@@ -14,13 +13,10 @@ namespace MyContactBook.Commands
             _contactsViewModel.PropertyChanged += ContactsViewModelPropertyChanged;
         }
 
-        private void ContactsViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void ContactsViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ContactsViewModel.SelectedContact))
-            {
-                OnCanExecuteChanged();
-            }
-            if (e.PropertyName == nameof(ContactsViewModel.SelectedContact.Editable))
+            if (e.PropertyName == nameof(ContactsViewModel.SelectedContact)
+                || e.PropertyName == nameof(ContactsViewModel.SelectedContact.Editable))
             {
                 OnCanExecuteChanged();
             }
@@ -33,7 +29,7 @@ namespace MyContactBook.Commands
 
         public override void Execute(object? parameter)
         {
-            _contactsViewModel.SelectedContact.Editable = true;
+            _contactsViewModel.Editable = true;
         }
     }
 }

@@ -1,12 +1,7 @@
 ﻿using MyContactBook.DbRealization;
 using MyContactBook.Models;
 using MyContactBook.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyContactBook.Commands
 {
@@ -37,7 +32,7 @@ namespace MyContactBook.Commands
         {
             using (DataContext db = new DataContext())
             {
-                Contact contact = new() { FirstName = "test" };
+                Contact contact = new Contact();
                 db.Contacts.Add(contact);
                 _contactsViewModel.SelectedContact = contact;
                 db.SaveChanges();
