@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyContactBook.Models;
+using ContactBook_OnlyContacts.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyContactBook.DbRealization
+namespace ContactBook_OnlyContacts.DbRealization
 {
     public class DataContext : DbContext
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace MyContactBook.Views
+namespace ContactBook_OnlyContacts.Views
 {
     /// <summary>
     /// Interaction logic for ContactsView.xaml

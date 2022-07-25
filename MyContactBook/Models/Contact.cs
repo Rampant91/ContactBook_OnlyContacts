@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyContactBook.Models
+namespace ContactBook_OnlyContacts.Models
 {
     public class Contact
     {

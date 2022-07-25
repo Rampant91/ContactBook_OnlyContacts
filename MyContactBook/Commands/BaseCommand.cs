@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MyContactBook.Commands
+namespace ContactBook_OnlyContacts.Commands
 {
     public abstract class BaseCommand : ICommand
     {

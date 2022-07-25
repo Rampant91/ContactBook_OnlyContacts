@@ -1,7 +1,7 @@
-﻿using MyContactBook.ViewModels;
+﻿using ContactBook_OnlyContacts.ViewModels;
 using System.Windows;
 
-namespace MyContactBook
+namespace ContactBook_OnlyContacts
 {
     public partial class App : Application
     {

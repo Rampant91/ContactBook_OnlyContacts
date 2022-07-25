@@ -1,5 +1,5 @@
-﻿using MyContactBook.DbRealization;
-using MyContactBook.ViewModels;
+﻿using ContactBook_OnlyContacts.DbRealization;
+using ContactBook_OnlyContacts.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyContactBook.Commands
+namespace ContactBook_OnlyContacts.Commands
 {
     public class DeleteContactCommand : BaseCommand
     {

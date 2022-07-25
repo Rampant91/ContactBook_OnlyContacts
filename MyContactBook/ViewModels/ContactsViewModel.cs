@@ -1,10 +1,10 @@
-﻿using MyContactBook.Commands;
-using MyContactBook.DbRealization;
-using MyContactBook.Models;
+﻿using ContactBook_OnlyContacts.Commands;
+using ContactBook_OnlyContacts.DbRealization;
+using ContactBook_OnlyContacts.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace MyContactBook.ViewModels
+namespace ContactBook_OnlyContacts.ViewModels
 {
     public class ContactsViewModel : BaseViewModel
     {

@@ -1,7 +1,7 @@
-﻿using MyContactBook.ViewModels;
+﻿using ContactBook_OnlyContacts.ViewModels;
 using System.ComponentModel;
 
-namespace MyContactBook.Commands
+namespace ContactBook_OnlyContacts.Commands
 {
     public class EditContactCommand : BaseCommand
     {

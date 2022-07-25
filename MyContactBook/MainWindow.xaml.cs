@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MyContactBook
+namespace ContactBook_OnlyContacts
 {
     public partial class MainWindow : Window
     {

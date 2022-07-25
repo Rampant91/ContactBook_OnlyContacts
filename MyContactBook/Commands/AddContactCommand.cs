@@ -1,9 +1,9 @@
-﻿using MyContactBook.DbRealization;
-using MyContactBook.Models;
-using MyContactBook.ViewModels;
+﻿using ContactBook_OnlyContacts.DbRealization;
+using ContactBook_OnlyContacts.Models;
+using ContactBook_OnlyContacts.ViewModels;
 using System.ComponentModel;
 
-namespace MyContactBook.Commands
+namespace ContactBook_OnlyContacts.Commands
 {
     public class AddContactCommand : BaseCommand
     {

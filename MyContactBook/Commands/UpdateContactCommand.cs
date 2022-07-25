@@ -1,9 +1,9 @@
-﻿using MyContactBook.DbRealization;
-using MyContactBook.ViewModels;
+﻿using ContactBook_OnlyContacts.DbRealization;
+using ContactBook_OnlyContacts.ViewModels;
 using System.ComponentModel;
 using System.Linq;
 
-namespace MyContactBook.Commands
+namespace ContactBook_OnlyContacts.Commands
 {
     public class UpdateContactCommand : BaseCommand
     {

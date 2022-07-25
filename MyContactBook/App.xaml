@@ -1,7 +1,7 @@
-﻿<Application x:Class="MyContactBook.App"
+﻿<Application x:Class="ContactBook_OnlyContacts.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MyContactBook">
+             xmlns:local="clr-namespace:ContactBook_OnlyContacts">
     <Application.Resources>
 
     </Application.Resources>
